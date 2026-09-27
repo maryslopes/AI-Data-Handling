@@ -1,0 +1,52 @@
+# AI Data Handling Project M1 2026
+Machine learning and AI projects for my 2026 course.
+
+```bash
+git clone https://github.com/maryslopes/AI-Data-Handling/new/main
+
+# My Project
+Build an AI system that identifies early signs of equipment malfunction to reduce batch failures, prevent quality deviations, and support continuous improvement in pharmaceutical production environments.
+
+#1.Raw data storage
+The raw data was obtained from The Raw data will be Kaggle public database center, as per link below:
+Dataset: Equipment Failure Prediction Dataset
+https://www.kaggle.com/datasets/geetanjalisikarwar/equipment-failure-prediction-dataset
+This data will be storage on Google Cloud Storage (GCS) bucket as a CSV file
+
+#2.Processed data storage & file formats
+The processed data will be storage as CSV file on the following bucket
+BUCKET_NAME = "Predicting-Equipment-Failure-20122724"
+LOCATION = "US"
+
+#3.Database/object storage decision
+The files will be storage on Google Cloud Storage (GCS) in a structured format as followed
+//<Predicting-Equipment-Failure-20122724>/
+├── raw/titanic.csv                - (raw original dataset obtained from Kaggle)
+└── sharded/                       - (create splits and cross-valitation)
+    ├── train.csv
+    ├── dev.csv
+    ├── test.csv
+    └── cv_folds/                  - (cross-validation folders for AI training)
+        ├── fold_0_train.csv
+        ├── fold_0_val.csv
+        ├── fold_1_train.csv
+        ├── fold_1_val.csv
+        ├── fold_2_train.csv
+        ├── fold_2_val.csv
+        ├── fold_3_train.csv
+        ├── fold_3_val.csv
+        ├── fold_4_train.csv
+        ├── fold_4_val.csv
+        ├── fold_5_train.csv
+        ├── fold_5_val.csv
+        ├── fold_6_train.csv
+        ├── fold_6_val.csv
+        ├── fold_7_train.csv
+        ├── fold_7_val.csv
+
+#4.Data versioning 
+The data versioning will be automatically track in Google Cloud Storage by enabling Object Versioning on my bucket. This creates a full history of every overwrite or deletion, each identified by a unique generation number.
+It will have a maximum of 3 versions which they will be storage for 7 days.
+
+#4.Data access
+I will be the only person that will have access to it via Colab.
