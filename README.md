@@ -51,4 +51,38 @@ It will have a maximum of 3 versions which they will be storage for 7 days.
 #5.Data access
 I will be the only person that will have access to it via authentication on Colab.
  
-#6.Data split/validation strategy
+#6.Data split/validation strategy (WRITE MORE!!!)
+
+#7.Feature description
+UDI: A unique identifier for each data point, ranging from 1 to 10,000.
+
+Product ID: A unique identifier for each product.
+
+Type: The quality variant of the product, categorized as 'L' (low), 'M' (medium), or 'H' (high).
+
+Air temperature [K]: The ambient air temperature in Kelvin.
+
+Process temperature [K]: The temperature of the manufacturing process in Kelvin.
+
+Rotational speed [rpm]: The rotational speed of the machine's tool in revolutions per minute.
+
+Torque [Nm]: The torque applied by the tool in Newton-meters.
+
+Tool wear [min]: The wear on the tool in minutes of usage.
+
+Machine failure: A binary label indicating whether the machine failed (1) or not (0). This is the primary target variable.
+
+TWF (Tool Wear Failure): A binary flag indicating if the failure was caused by tool wear.
+
+HDF (Heat Dissipation Failure): A binary flag indicating if the failure was caused by heat dissipation issues.
+
+PWF (Power Failure): A binary flag indicating if the failure was caused by a power failure.
+
+OSF (Overstrain Failure): A binary flag indicating if the failure was caused by overstraining the tool.
+
+RNF (Random Failure): A binary flag indicating if the failure was a random, non-specific failure.
+
+#8. Data types and formats
+
+<img width="1076" height="365" alt="image" src="https://github.com/user-attachments/assets/5f0ed067-1bc2-4f17-a05e-9aafc506c530" />
+
