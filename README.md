@@ -121,6 +121,16 @@ RNF (Random Failure): A binary flag indicating if the failure was a random, non-
 
 #9. Reproducibility of data collection
 The data can be reproduced by following the commands on Colab as per https://github.com/maryslopes/AI-Data-Handling/blob/main/Equipment_Failure_notebook_gcs.ipynb
+The Tasks are as followed:
+Cell 1 — Setup & Environment Installation
+Cell 2 — Configuration & GCP Authentication
+Cell 3 — Create the GCS Bucket
+Cell 4 — Download Raw Equipment-Failure Data & Ingest to GCS
+Cell 5 — Partition Data: Train / Dev / Test + 8-Fold CV
+Cell 6 — Export Shards and Push to sharded/ in GCS
+Cell 6.b. Process data to align to BigQuery requirements
+Cell 7 — Load Data into GCP SQL Databases
+Cell 8 — Verify Bucket Hierarchy & Read a GCS Shard
 <img width="1602" height="587" alt="M1 screenshot raw data" src="https://github.com/user-attachments/assets/5cefea73-0745-44b0-a5a8-2a4bae8a295f" />
 
 <img width="1552" height="942" alt="M1 screenshot split" src="https://github.com/user-attachments/assets/b312e97e-8630-4fac-a867-5575a9ec62eb" />
