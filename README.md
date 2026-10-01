@@ -1,4 +1,3 @@
-<img width="1602" height="587" alt="M1 screenshot raw data" src="https://github.com/user-attachments/assets/c9a52092-89b6-4451-8e24-d0338cff1bdf" />
 # AI Data Handling Project M1 2026
 Machine learning and AI projects 2026 course.
 
@@ -119,10 +118,12 @@ RNF (Random Failure): A binary flag indicating if the failure was a random, non-
   - Tool wear [min]: float32
   - Machine failure: int8 (0/1)
   - TWF, HDF, PWF, OSF, RNF: int8 (0/1)
- 
-  #9.Reproducibility of data collection
 
+#9. Reproducibility of data collection
+The data can be reproduced by following the commands on Colab as per https://github.com/maryslopes/AI-Data-Handling/blob/main/Equipment_Failure_notebook_gcs.ipynb
 <img width="1602" height="587" alt="M1 screenshot raw data" src="https://github.com/user-attachments/assets/5cefea73-0745-44b0-a5a8-2a4bae8a295f" />
 
 <img width="1552" height="942" alt="M1 screenshot split" src="https://github.com/user-attachments/assets/b312e97e-8630-4fac-a867-5575a9ec62eb" />
 
+#10. Reproducibility of preprocessing
+<img width="1007" height="665" alt="M1 screenshot processed data to adjust column names" src="https://github.com/user-attachments/assets/74182961-38ae-4804-8b78-1e068cfbf9f5" />
