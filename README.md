@@ -15,12 +15,12 @@ This data will be storage on Google Cloud Storage (GCS) bucket as a CSV file
 
 #2.Processed data storage & file formats
 The processed data will be storage as CSV file on the following bucket
-BUCKET_NAME = "Predicting-Equipment-Failure-20122724"
+BUCKET_NAME = "equipment-failure-20122724"
 LOCATION = "US"
 
 #3.Database/object storage decision
 The files will be storage on Google Cloud Storage (GCS) in a structured format as followed
-//<Predicting-Equipment-Failure-20122724>/
+//<equipment-failure-20122724>/
 ├── raw/titanic.csv                - (raw original dataset obtained from Kaggle)
 └── sharded/                       - (create splits and cross-valitation)
     ├── train.csv
