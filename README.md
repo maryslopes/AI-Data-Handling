@@ -49,7 +49,19 @@ The data versioning will be automatically track in Google Cloud Storage by enabl
 It will have a maximum of 3 versions which they will be storage for 7 days.
 
 #5.Data access
-I will be the only person that will have access to it via authentication on Colab.
+The data stored in Google Cloud Storage (GCS) will be accessed programmatically through authenticated sessions in Google Colab. Access is performed using:
+
+GCS paths such as:
+gs://equipment-failure-20122724/raw/Equipment-Failure.csv
+
+gcsfs for reading CSV files directly into pandas
+
+Google Cloud SDK authentication (from google.colab import auth; auth.authenticate_user())
+
+BigQuery Python client when loading data into BigQuery
+
+Only authenticated users with the correct IAM permissions (Storage Object Viewer / Storage Object Admin) can access the bucket. No public access is enabled.
+
  
 #6.Data split/validation strategy (WRITE MORE!!!)
 
