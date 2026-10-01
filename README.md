@@ -1,5 +1,5 @@
 # AI Data Handling Project M1 2026
-Machine learning and AI projects for my 2026 course.
+Machine learning and AI projects 2026 course.
 
 # My Project
 Build an AI system that identifies early signs of equipment malfunction to reduce batch failures, prevent quality deviations, and support continuous improvement in pharmaceutical production environments.
@@ -121,3 +121,4 @@ RNF (Random Failure): A binary flag indicating if the failure was a random, non-
  
   #9.Reproducibility of data collection
 
+![Raw data]("C:\Users\marys\Desktop\AI-ML-Course\Data-Handling\Project\M1 screenshot raw data.png")
