@@ -1,17 +1,17 @@
 # AI Data Handling Project M1 2026
 Machine learning and AI projects for my 2026 course.
 
-```bash
-git clone https://github.com/maryslopes/AI-Data-Handling/new/main
-
 # My Project
 Build an AI system that identifies early signs of equipment malfunction to reduce batch failures, prevent quality deviations, and support continuous improvement in pharmaceutical production environments.
 
 #1.Raw data storage
-The raw data was obtained from The Raw data will be Kaggle public database center, as per link below:
+he raw data was obtained from The Raw data will be Kaggle public database center, as per link below:
 Dataset: Equipment Failure Prediction Dataset
 https://www.kaggle.com/datasets/geetanjalisikarwar/equipment-failure-prediction-dataset
-This data will be storage on Google Cloud Storage (GCS) bucket as a CSV file
+
+The raw dataset (Equipment Failure, originally from Kaggle) is stored as a CSV file inside a Google Cloud Storage (GCS) bucket:
+gs://equipment-failure-20122724/raw/Equipment-Failure.csv
+GCS is appropriate because it provides durable, scalable object storage, supports versioning, integrates directly with BigQuery and Colab, and allows programmatic access through gcsfs.
 
 #2.Processed data storage & file formats
 The processed data will be storage as CSV file on the following bucket
@@ -19,6 +19,7 @@ BUCKET_NAME = "equipment-failure-20122724"
 LOCATION = "US"
 
 #3.Database/object storage decision
+
 The files will be storage on Google Cloud Storage (GCS) in a structured format as followed
 //<equipment-failure-20122724>/
 ├── raw/titanic.csv                - (raw original dataset obtained from Kaggle)
@@ -43,10 +44,14 @@ The files will be storage on Google Cloud Storage (GCS) in a structured format a
         ├── fold_6_val.csv
         ├── fold_7_train.csv
         ├── fold_7_val.csv
+ The object storage (Google Cloud Storage) rather than a relational database because:
+- Data is tabular, file-oriented, and consumed in batch for ML training.
+- GCS supports versioning, lifecycle rules, and easy integration with training environments.
+- If low-latency row-level queries are later required, we will export to BigQuery or a managed OLAP store.
 
 #4.Data versioning 
 The data versioning will be automatically track in Google Cloud Storage by enabling Object Versioning on my bucket. This creates a full history of every overwrite or deletion, each identified by a unique generation number.
-It will have a maximum of 3 versions which they will be storage for 7 days.
+Keep up to 3 recent generations per object; older generations are deleted after 7 days (lifecycle rule).
 
 #5.Data access
 The data stored in Google Cloud Storage (GCS) will be accessed programmatically through authenticated sessions in Google Colab. Access is performed using:
@@ -63,7 +68,11 @@ BigQuery Python client when loading data into BigQuery
 Only authenticated users with the correct IAM permissions (Storage Object Viewer / Storage Object Admin) can access the bucket. No public access is enabled.
 
  
-#6.Data split/validation strategy (WRITE MORE!!!)
+#6.Data split/validation strategy 
+Primary split (train / dev / test)**
+- **Test set**: 10% of unique Product ID groups, held out and never used during model selection.
+- **Dev set**: 10% of unique Product ID groups, used for hyperparameter tuning.
+- **Train set**: remaining 80%.
 
 #7.Feature description
 UDI: A unique identifier for each data point, ranging from 1 to 10,000.
@@ -96,5 +105,19 @@ RNF (Random Failure): A binary flag indicating if the failure was a random, non-
 
 #8. Data types and formats
 
-<img width="1076" height="365" alt="image" src="https://github.com/user-attachments/assets/5f0ed067-1bc2-4f17-a05e-9aafc506c530" />
+- Raw file: CSV (utf-8) as downloaded from Kaggle.
+- Processed files: Parquet (preferred) and CSV exports for inspection.
+- Column types:
+  - UDI: integer
+  - Product ID: string
+  - Type: categorical (string)
+  - Air temperature [K]: float32
+  - Process temperature [K]: float32
+  - Rotational speed [rpm]: float32
+  - Torque [Nm]: float32
+  - Tool wear [min]: float32
+  - Machine failure: int8 (0/1)
+  - TWF, HDF, PWF, OSF, RNF: int8 (0/1)
+ 
+  #9.Reproducibility of data collection
 
