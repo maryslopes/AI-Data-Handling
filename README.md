@@ -22,7 +22,7 @@ LOCATION = "US"
 
 The files will be storage on Google Cloud Storage (GCS) in a structured format as followed
 //<equipment-failure-20122724>/
-├── raw/titanic.csv                - (raw original dataset obtained from Kaggle)
+├── raw/Equipment-Failure.csv                - (raw original dataset obtained from Kaggle)
 └── sharded/                       - (create splits and cross-valitation)
     ├── train.csv
     ├── dev.csv
@@ -126,4 +126,8 @@ The data can be reproduced by following the commands on Colab as per https://git
 <img width="1552" height="942" alt="M1 screenshot split" src="https://github.com/user-attachments/assets/b312e97e-8630-4fac-a867-5575a9ec62eb" />
 
 #10. Reproducibility of preprocessing
+As per steps described on printscreen below the columns names were convert to format as per BigQuery format.
 <img width="1007" height="665" alt="M1 screenshot processed data to adjust column names" src="https://github.com/user-attachments/assets/74182961-38ae-4804-8b78-1e068cfbf9f5" />
+
+The image below show the generated file:
+<img width="1537" height="602" alt="M1 screenshot processed file" src="https://github.com/user-attachments/assets/0b2579ae-df4c-4c62-b067-81a4463fda1b" />
