@@ -154,33 +154,50 @@ Cell 8 — Verify Bucket Hierarchy & Read a GCS Shard
 #10. Reproducibility of preprocessing
 The following steps describes the ordered transformations:
 Cell 1 — Setup & Environment Installation
+
 <img width="1090" height="177" alt="image" src="https://github.com/user-attachments/assets/be328999-5ae7-457d-9d41-be5f444cc16f" />
 
+
 Cell 2 — Configuration & GCP Authentication
+
 <img width="682" height="675" alt="image" src="https://github.com/user-attachments/assets/cd15a785-6daa-4fe3-9f2d-15bbdfb1fbc6" />
 
+
 Cell 3 — Create the GCS Bucket
+
 <img width="585" height="320" alt="image" src="https://github.com/user-attachments/assets/325a7a91-8d3f-4462-9527-0b4c668f21d4" />
 
+
 Cell 4 — Download Raw Equipment-Failure Data & Ingest to GCS
+
 <img width="1107" height="532" alt="image" src="https://github.com/user-attachments/assets/62b7eda8-77e7-4e12-8103-fab9f7b8667d" />
 
+
 Cell 5 — Partition Data: Train / Dev / Test + 8-Fold CV
+
 <img width="601" height="797" alt="image" src="https://github.com/user-attachments/assets/84013cbc-089b-4d41-868d-05e3422d6605" />
+
 
 <img width="1431" height="597" alt="image" src="https://github.com/user-attachments/assets/5c78eae7-1539-48be-a55a-00297d304f5d" />
 
+
 Cell 6 — Export Shards and Push to sharded/ in GCS
+
 <img width="645" height="607" alt="image" src="https://github.com/user-attachments/assets/fa26c91e-5746-4ddf-9adc-4b183e564d9a" />
+
+
 Cell 6.b. Process data to align to BigQuery requirements
+
 <img width="1427" height="682" alt="image" src="https://github.com/user-attachments/assets/bacf58c3-2930-482d-a90c-241e62d799a6" />
 
 Cell 7 — Load Data into GCP SQL Databases
 
 <img width="1307" height="606" alt="image" src="https://github.com/user-attachments/assets/4dc7fd8b-ff91-43a1-8626-739975aeedab" />
 
+
 Cell 8 — Verify Bucket Hierarchy & Read a GCS Shard
 As per steps described on printscreen below the columns names were convert to format as per BigQuery format.
+
 <img width="1007" height="665" alt="M1 screenshot processed data to adjust column names" src="https://github.com/user-attachments/assets/74182961-38ae-4804-8b78-1e068cfbf9f5" />
 
 <img width="1235" height="332" alt="image" src="https://github.com/user-attachments/assets/0c5dd055-7025-41a0-b8a7-3c218e695f09" />
