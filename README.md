@@ -190,6 +190,9 @@ Cell 6.b. Process data to align to BigQuery requirements
 
 <img width="1427" height="682" alt="image" src="https://github.com/user-attachments/assets/bacf58c3-2930-482d-a90c-241e62d799a6" />
 
+The image below show the generated file:
+<img width="1537" height="602" alt="M1 screenshot processed file" src="https://github.com/user-attachments/assets/0b2579ae-df4c-4c62-b067-81a4463fda1b" />
+
 Cell 7 — Load Data into GCP SQL Databases
 
 <img width="1307" height="606" alt="image" src="https://github.com/user-attachments/assets/4dc7fd8b-ff91-43a1-8626-739975aeedab" />
@@ -202,5 +205,4 @@ As per steps described on printscreen below the columns names were convert to fo
 
 <img width="1235" height="332" alt="image" src="https://github.com/user-attachments/assets/0c5dd055-7025-41a0-b8a7-3c218e695f09" />
 
-The image below show the generated file:
-<img width="1537" height="602" alt="M1 screenshot processed file" src="https://github.com/user-attachments/assets/0b2579ae-df4c-4c62-b067-81a4463fda1b" />
+
