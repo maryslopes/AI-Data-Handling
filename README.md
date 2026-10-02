@@ -22,29 +22,10 @@ Train, development, test, and cross-validation files will be stored under gs://e
 #3.Database/object storage decision
 
 The files will be storage on Google Cloud Storage (GCS) in a structured format as followed
-//<equipment-failure-20122724>/
-├── raw/Equipment-Failure.csv                - (raw original dataset obtained from Kaggle)
-└── sharded/                       - (create splits and cross-valitation)
-    ├── train.csv
-    ├── dev.csv
-    ├── test.csv
-    └── cv_folds/                  - (cross-validation folders for AI training)
-        ├── fold_0_train.csv
-        ├── fold_0_val.csv
-        ├── fold_1_train.csv
-        ├── fold_1_val.csv
-        ├── fold_2_train.csv
-        ├── fold_2_val.csv
-        ├── fold_3_train.csv
-        ├── fold_3_val.csv
-        ├── fold_4_train.csv
-        ├── fold_4_val.csv
-        ├── fold_5_train.csv
-        ├── fold_5_val.csv
-        ├── fold_6_train.csv
-        ├── fold_6_val.csv
-        ├── fold_7_train.csv
-        ├── fold_7_val.csv
+
+<img width="600" height="465" alt="image" src="https://github.com/user-attachments/assets/5c9e40a4-24b7-44e3-bda8-e1f5c4810043" />
+
+
  The object storage (Google Cloud Storage) rather than a relational database because:
 - Data is tabular, file-oriented, and consumed in batch for ML training.
 - GCS supports versioning, lifecycle rules, and easy integration with training environments.
