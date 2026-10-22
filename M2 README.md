@@ -59,6 +59,7 @@ The dataset is anonymised/simulated, so while useful for modelling, it may not f
 
 
 #4.Exploratory data analysis
+
 Relevant descriptive statistics and visualisations. Explain what each result means for 
 cleaning, transformation, feature engineering, splitting or evaluation. 
 
