@@ -1,4 +1,4 @@
-# AI Data Handling Project M1 2026
+# AI Data Handling Project M2 2026
 Machine learning and AI projects 2026 course.
 
 # My Project
