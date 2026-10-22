@@ -63,7 +63,9 @@ Relevant descriptive statistics and visualisations. Explain what each result mea
 cleaning, transformation, feature engineering, splitting or evaluation. 
 
 #5.Design/ Architecture
+
 #6.Implementation
+
 #7.Next steps
 
 
