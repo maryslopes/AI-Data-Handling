@@ -74,7 +74,11 @@ Code snippets from M2 equipment_failure_notebook_Statistical_Reasoning.ipynb Sec
 
 <img width="682" height="667" alt="image" src="https://github.com/user-attachments/assets/48afa120-0a9a-4257-9e6f-e1e7c9a4ecca" />
 
+
+
 <img width="506" height="262" alt="image" src="https://github.com/user-attachments/assets/0924c39c-2b8b-45b8-9524-17a54347585f" />
+
+
 
 <img width="262" height="561" alt="image" src="https://github.com/user-attachments/assets/6795d302-ea51-4df5-83bb-e2216a64f467" />
 
@@ -99,7 +103,11 @@ Code snippets from M2 equipment_failure_notebook_Statistical_Reasoning.ipynb sec
 
 <img width="851" height="597" alt="image" src="https://github.com/user-attachments/assets/4511c154-7642-4a26-bb7b-51143e7c4978" />
 
+
+
 <img width="1383" height="1183" alt="image" src="https://github.com/user-attachments/assets/f0e9dccc-1d2c-4e51-97da-cb2c629e25ca" />
+
+
 
 <img width="969" height="858" alt="image" src="https://github.com/user-attachments/assets/1ef3aa94-6ce1-455f-9a78-5bbfd6326d43" />
 
