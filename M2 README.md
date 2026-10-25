@@ -136,12 +136,14 @@ Rotational Speed [rpm]
   Central Tendency: Mean 1,538.776[rpm] is visibly higher than the Median 1,503.000[rpm].   
   Spread: Moderate variability std = 179.284[rpm], IQR = 189.000[rpm], spanning from 1,168.000[rpm] up to a maximum of $2,886.000[rpm].   
   Distribution Shape: Skewness is strongly positive 1.993.   
-  Takeaway: This feature is strongly right-skewed (positively skewed). Most operating speeds cluster around 1,500[rpm], but there is a long tail of extreme high-speed operational events (reaching up to 2,886 [rpm].   
+  Takeaway: This feature is strongly right-skewed (positively skewed). Most operating speeds cluster around 1,500[rpm], but there is a long tail of extreme high-speed operational events (reaching up to 2,886 [rpm]. 
+  
 Torque [Nm]
   Central Tendency: Mean 39.987[Nm] and Median 40.100 [Nm] are centered around 40[Nm].   
   Spread: Standard deviation is 9.969 [Nm] and IQR is 13.600 [Nm], ranging between 3.800 [Nm] and 76.600[Nm]. 
   Distribution Shape: Skewness is near zero -0.010.   
   Takeaway: Torque is well-balanced and symmetric around 40[Nm]. 
+  
 Tool Wear [min]
   Central Tendency: Mean 107.951[ min] and Median 108.000[min] sit right near the midpoint of its observed range.   
   Spread: High dispersion std = 63.654[ min], IQR = 109.000[min], stretching from 0[min] to 253[min].   
