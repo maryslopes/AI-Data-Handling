@@ -117,7 +117,7 @@ Summary:
 #5.Design/ Architecture
 The pipeline follows an end‑to‑end structure from data acquisition to output:
 
- ```markdown
+
   ```mermaid
 flowchart LR
     A[Kaggle Dataset] --> B[Ingest to GCS]
