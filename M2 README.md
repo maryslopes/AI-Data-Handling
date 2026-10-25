@@ -101,6 +101,12 @@ Tool Wear [min]
   Distribution Shape: Skewness is near zero 0.027.   
   Takeaway: Represents a Uniform-like distribution across tool lifecycle times, where tools accumulate wear linearly from 0 up to around 250 minutes before replacement or failure
 
+Summary:
+- Failure cases are rare (~3%), confirming class imbalance.
+- Air temperature ranges between 295K–325K, normally distributed.
+- Tool wear shows a skewed distribution, suggesting scaling or transformation.
+- Correlation heatmap indicates torque and rotational speed are moderately correlated.
+  
 #5.Design/ Architecture
 
 #6.Implementation
