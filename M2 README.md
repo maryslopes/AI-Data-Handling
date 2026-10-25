@@ -34,15 +34,16 @@ Each row represents one equipment operation instance with associated process var
 
 - Column types:
   - UDI: integer
-  - Product ID: string
-  - Type: categorical (string)
-  - Air temperature [K]: float32
-  - Process temperature [K]: float32
-  - Rotational speed [rpm]: float32
-  - Torque [Nm]: float32
-  - Tool wear [min]: float32
-  - Machine failure: int8 (0/1)
+  - product_id: string
+  - type: categorical (string)
+  - air_temperature_: float32
+  - process_temperature_k: float32
+  - rotational_speed_rpm: float32
+  - torque_nm: float32
+  - tool_wear_min: float32
+  - machine_failure: int8 (0/1)
   - TWF, HDF, PWF, OSF, RNF: int8 (0/1)
+
 
 Number of records: Approximately 10,000+ rows.
 
@@ -69,16 +70,30 @@ The dataset is anonymised/simulated, so while useful for modelling, it may not f
 
 
 
-Code snippets from M2 equipment_failure_notebook_Statistical_Reasoning.ipynb Section 2: Dataset has 10,000 rows and 12 columns. Failure rate is ~3%. No missing values in key features.
+Code snippets from M2 equipment_failure_notebook_Statistical_Reasoning.ipynb Section 2: Dataset has 10,000 rows and 15 columns. Failure rate is ~3%. No missing values in key features.
 
-<img width="997" height="507" alt="image" src="https://github.com/user-attachments/assets/b59e5b30-591d-4bb2-bd8f-168f7b4fb958" />
+<img width="682" height="667" alt="image" src="https://github.com/user-attachments/assets/48afa120-0a9a-4257-9e6f-e1e7c9a4ecca" />
+
+<img width="506" height="262" alt="image" src="https://github.com/user-attachments/assets/0924c39c-2b8b-45b8-9524-17a54347585f" />
+
+<img width="262" height="561" alt="image" src="https://github.com/user-attachments/assets/6795d302-ea51-4df5-83bb-e2216a64f467" />
+
+
 
 
 
 # 4.Exploratory data analysis
 
-Relevant descriptive statistics and visualisations. Explain what each result means for 
-cleaning, transformation, feature engineering, splitting or evaluation. 
+EDA was performed on the **processed dataset** (`processed/Equipment-Failure-clean.csv`).  
+Key findings:
+
+- **Failure distribution**: Failures are rare (~3%), confirming the need for resampling or class-weight adjustments.
+- **Air temperature [K]**: Normally distributed between 295–325K.
+- **Process temperature [K]**: Slightly skewed, ranges 305–325K.
+- **Tool wear [min]**: Strongly skewed, with long tail → scaling required.
+- **Rotational speed [rpm]**: Wide range, correlated with torque.
+- **Correlation heatmap**: Moderate correlation between torque and rotational speed.
+
 
 Code snippets from M2 equipment_failure_notebook_Statistical_Reasoning.ipynb section 4:
 
