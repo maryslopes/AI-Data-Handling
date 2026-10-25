@@ -64,6 +64,7 @@ Code snippets from M2 equipment_failure_notebook_Statistical_Reasoning.ipynb Sec
 <img width="997" height="507" alt="image" src="https://github.com/user-attachments/assets/b59e5b30-591d-4bb2-bd8f-168f7b4fb958" />
 
 
+
 # 4.Exploratory data analysis
 
 Relevant descriptive statistics and visualisations. Explain what each result means for 
@@ -72,6 +73,12 @@ cleaning, transformation, feature engineering, splitting or evaluation.
 Code snippets from M2 equipment_failure_notebook_Statistical_Reasoning.ipynb section 4:
 
 <img width="851" height="597" alt="image" src="https://github.com/user-attachments/assets/4511c154-7642-4a26-bb7b-51143e7c4978" />
+
+<img width="1383" height="1183" alt="image" src="https://github.com/user-attachments/assets/f0e9dccc-1d2c-4e51-97da-cb2c629e25ca" />
+
+<img width="969" height="858" alt="image" src="https://github.com/user-attachments/assets/1ef3aa94-6ce1-455f-9a78-5bbfd6326d43" />
+
+
 The statistics analysis show that: 
 Data Quality & CompletenessSample Size (n = 10,000): All 5 features have 10,000 non-null values with 0 missing values. This ensures high statistical power for downstream modeling or inference. 
 
@@ -108,6 +115,25 @@ Summary:
 - Correlation heatmap indicates torque and rotational speed are moderately correlated.
   
 #5.Design/ Architecture
+The pipeline follows an end‑to‑end structure from data acquisition to output:
+
+ ```markdown
+  ```mermaid
+flowchart LR
+    A[Kaggle Dataset] --> B[Ingest to GCS]
+    B --> C[Validation: schema, missing values]
+    C --> D[Processed Storage in GCS]
+    D --> E[Transformation: scaling, encoding, splitting]
+    E --> F[Train/Dev/Test + CV folds]
+    F --> G[Output: ready datasets for ML]
+```
+
+This architecture shows the end-to-end pipeline:
+- Data is downloaded from Kaggle and ingested into Google Cloud Storage.
+- Validation checks schema, ranges, and missing values.
+- Raw and processed data are stored in separate GCS folders.
+- Transformation includes encoding categorical variables, scaling numeric features, and splitting into train/dev/test sets.
+- Outputs are sharded datasets ready for ML training and cross-validation.
 
 #6.Implementation
 
