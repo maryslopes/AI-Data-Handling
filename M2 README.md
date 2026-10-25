@@ -23,7 +23,15 @@ Ethical considerations: Using this dataset for academic purposes is ethical, as 
 Data limitation: Dataset is simulated, not pharma-specific, may not generalize to GMP environments.
 
 #3.Data description
-Unit of analysis: Each record represents one equipment operation instance, with associated process variables and a failure outcome label.
+For statistical analysis and exploratory data analysis (EDA), we use the **processed dataset** stored in GCS:
+
+`gs://equipment-failure-20122724/processed/Equipment-Failure-clean.csv`
+
+This file is derived from the raw Kaggle dataset (`gs://equipment-failure-20122724/raw/Equipment-Failure.csv`) after validation and cleaning. Column names were adjusted to meet BigQuery requirements, and data types were standardized.
+
+### Unit of analysis
+Each row represents one equipment operation instance with associated process variables and a binary failure outcome.
+
 - Column types:
   - UDI: integer
   - Product ID: string
@@ -58,6 +66,8 @@ It may not capture the full diversity of equipment types or failure modes found 
 The imbalance between failure and non-failure records may bias models toward predicting “no failure”.
 
 The dataset is anonymised/simulated, so while useful for modelling, it may not fully reflect the complexity of regulated GMP environments.
+
+
 
 Code snippets from M2 equipment_failure_notebook_Statistical_Reasoning.ipynb Section 2: Dataset has 10,000 rows and 12 columns. Failure rate is ~3%. No missing values in key features.
 
@@ -137,5 +147,22 @@ This architecture shows the end-to-end pipeline:
 
 #6.Implementation
 
+The GCS bucket is organized into three main areas:
+
+- **Raw data**: `gs://equipment-failure-20122724/raw/Equipment-Failure.csv`  
+  Source dataset downloaded from Kaggle. All train/dev/test splits and CV folds are generated from this file.
+
+- **Processed data**: `gs://equipment-failure-20122724/processed/Equipment-Failure-clean.csv`  
+  Cleaned version of the raw dataset, with column names adjusted for BigQuery requirements. Used for SQL queries and reproducibility checks.
+
+- **Sharded splits**: `gs://equipment-failure-20122724/sharded/`  
+  Contains train/dev/test partitions and 8-fold cross-validation datasets, all derived from the raw file.
+
+This separation ensures:
+- **Raw file** remains untouched for reproducibility.  
+- **Processed file** supports BigQuery ingestion.  
+- **Sharded splits** support ML training and evaluation.
+
+- 
 #7.Next steps
 
