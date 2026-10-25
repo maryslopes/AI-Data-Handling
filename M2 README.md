@@ -31,6 +31,8 @@ For statistical analysis and exploratory data analysis (EDA), we use the **proce
 This file is derived from the raw Kaggle dataset (`gs://equipment-failure-20122724/raw/Equipment-Failure.csv`) after validation and cleaning. Column names were adjusted to meet BigQuery requirements, and data types were standardized.
 
 Screenshot of files on GCS:
+
+
 *RAW
 <img width="1766" height="617" alt="image" src="https://github.com/user-attachments/assets/3fac4fa8-344b-4515-bb77-1594401bb5d9" />
 
