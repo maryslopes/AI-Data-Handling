@@ -156,6 +156,7 @@ Summary:
 - Tool wear shows a skewed distribution, suggesting scaling or transformation.
 - Correlation heatmap indicates torque and rotational speed are moderately correlated.
   
+
 #5.Design/ Architecture
 The pipeline follows an end‑to‑end structure from data acquisition to output.  
 Since Milestone 2 analysis is based on the **processed cleaned file**, the architecture emphasizes reproducibility while ensuring that validated, BigQuery‑compatible data is used for statistical analysis.
@@ -183,6 +184,7 @@ Output: Sharded datasets and cross‑validation folds stored under sharded/.
 Analysis: All EDA and statistical analysis in Milestone 2 are performed on the processed file.
 
 
+
 #6.Implementation
 
 The GCS bucket is organized into three main areas:
@@ -206,6 +208,7 @@ In Milestone 1, the ingestion and splitting scripts were implemented
 - Train/dev/test splits and CV folds were generated from the raw file and stored under `sharded/`.  
 
 In Milestone 2, we build on this foundation by validating and cleaning the dataset, using the BigQuery‑compatible file (`processed/Equipment-Failure-clean.csv`) and performing statistical analysis and EDA.
+
 
 
 #7.Next steps
