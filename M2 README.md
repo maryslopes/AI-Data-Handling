@@ -72,16 +72,13 @@ The dataset is anonymised/simulated, so while useful for modelling, it may not f
 
 Code snippets from M2 equipment_failure_notebook_Statistical_Reasoning.ipynb Section 2: Dataset has 10,000 rows and 15 columns. Failure rate is ~3%. No missing values in key features.
 
-<img width="682" height="667" alt="image" src="https://github.com/user-attachments/assets/48afa120-0a9a-4257-9e6f-e1e7c9a4ecca" />
+<img width="842" height="600" alt="image" src="https://github.com/user-attachments/assets/5181e0a6-9e0c-41cb-8883-f411a06a7d28" />
 
 
-
-<img width="506" height="262" alt="image" src="https://github.com/user-attachments/assets/0924c39c-2b8b-45b8-9524-17a54347585f" />
-
+<img width="876" height="335" alt="image" src="https://github.com/user-attachments/assets/baea8f30-ff44-4dc3-b09d-c6fdabe22a5e" />
 
 
-<img width="262" height="561" alt="image" src="https://github.com/user-attachments/assets/6795d302-ea51-4df5-83bb-e2216a64f467" />
-
+<img width="891" height="635" alt="image" src="https://github.com/user-attachments/assets/ae4432b1-b531-48c9-a72e-ceaf3918f579" />
 
 
 
@@ -101,15 +98,13 @@ Key findings:
 
 Code snippets from M2 equipment_failure_notebook_Statistical_Reasoning.ipynb section 4:
 
-<img width="851" height="597" alt="image" src="https://github.com/user-attachments/assets/4511c154-7642-4a26-bb7b-51143e7c4978" />
+<img width="896" height="677" alt="image" src="https://github.com/user-attachments/assets/81236b22-be67-48d6-b4e9-ccb7d2a6d9f7" />
 
 
-
-<img width="1383" height="1183" alt="image" src="https://github.com/user-attachments/assets/f0e9dccc-1d2c-4e51-97da-cb2c629e25ca" />
-
+<img width="1383" height="1183" alt="image" src="https://github.com/user-attachments/assets/b03d61b0-4f10-4174-9a08-7b7a6ecc7dcd" />
 
 
-<img width="969" height="858" alt="image" src="https://github.com/user-attachments/assets/1ef3aa94-6ce1-455f-9a78-5bbfd6326d43" />
+<img width="962" height="851" alt="image" src="https://github.com/user-attachments/assets/c7ffcb08-58d4-4d23-8ea2-df06e6ce5b50" />
 
 
 The statistics analysis show that: 
@@ -148,25 +143,30 @@ Summary:
 - Correlation heatmap indicates torque and rotational speed are moderately correlated.
   
 #5.Design/ Architecture
-The pipeline follows an end‑to‑end structure from data acquisition to output:
+The pipeline follows an end‑to‑end structure from data acquisition to output.  
+Since Milestone 2 analysis is based on the **processed cleaned file**, the architecture emphasizes reproducibility while ensuring that validated, BigQuery‑compatible data is used for statistical analysis.
 
-
-  ```mermaid
+```mermaid
 flowchart LR
-    A[Kaggle Dataset] --> B[Ingest to GCS]
-    B --> C[Validation: schema, missing values]
-    C --> D[Processed Storage in GCS]
-    D --> E[Transformation: scaling, encoding, splitting]
+    A[Kaggle Dataset] --> B[Raw Data in GCS]
+    B --> C[Validation: schema, ranges, missing values]
+    C --> D[Processed Clean File in GCS]
+    D --> E[Transformation: encoding, scaling, splitting]
     E --> F[Train/Dev/Test + CV folds]
-    F --> G[Output: ready datasets for ML]
+    F --> G[Outputs for EDA and ML]
 ```
 
-This architecture shows the end-to-end pipeline:
-- Data is downloaded from Kaggle and ingested into Google Cloud Storage.
-- Validation checks schema, ranges, and missing values.
-- Raw and processed data are stored in separate GCS folders.
-- Transformation includes encoding categorical variables, scaling numeric features, and splitting into train/dev/test sets.
-- Outputs are sharded datasets ready for ML training and cross-validation.
+Source: Kaggle dataset downloaded and stored as raw/Equipment-Failure.csv.
+
+Validation: Schema checks, uniqueness of UDI, and binary integrity of failure flags.
+
+Processed file: Cleaned dataset (processed/Equipment-Failure-clean.csv) with renamed columns for BigQuery compatibility.
+
+Transformation: Encoding categorical variables, scaling numeric features, and splitting into train/dev/test sets.
+
+Output: Sharded datasets and cross‑validation folds stored under sharded/.
+
+Analysis: All EDA and statistical analysis in Milestone 2 are performed on the processed file.
 
 #6.Implementation
 
@@ -186,6 +186,7 @@ This separation ensures:
 - **Processed file** supports BigQuery ingestion.  
 - **Sharded splits** support ML training and evaluation.
 
-- 
-#7.Next steps
 
+#7.Next steps
+ Optimize preprocessing (scaling, feature engineering, dimensionality reduction).
+- Prepare for Milestone 3: baseline model comparison and evaluation plan.
