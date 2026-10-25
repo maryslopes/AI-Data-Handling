@@ -64,7 +64,7 @@ Code snippets from M2 equipment_failure_notebook_Statistical_Reasoning.ipynb Sec
 <img width="997" height="507" alt="image" src="https://github.com/user-attachments/assets/b59e5b30-591d-4bb2-bd8f-168f7b4fb958" />
 
 
-#4.Exploratory data analysis
+# 4.Exploratory data analysis
 
 Relevant descriptive statistics and visualisations. Explain what each result means for 
 cleaning, transformation, feature engineering, splitting or evaluation. 
@@ -73,8 +73,33 @@ Code snippets from M2 equipment_failure_notebook_Statistical_Reasoning.ipynb sec
 
 <img width="851" height="597" alt="image" src="https://github.com/user-attachments/assets/4511c154-7642-4a26-bb7b-51143e7c4978" />
 The statistics analysis show that: 
-Data Quality & CompletenessSample Size (n = 10,000$): All 5 features have 10,000 non-null values with $0$ missing values. This ensures high statistical power for downstream modeling or inference. 
-Air Temperature [K]Central Tendency: Mean ($300.005\text{ K}$) and Median ($300.100\text{ K}$) are nearly identical.   Spread: Standard deviation is low ($2.000\text{ K}$) with an IQR of $3.200\text{ K}$, spanning from $295.300\text{ K}$ to $304.500\text{ K}$.   Distribution Shape: Skewness is slightly positive ($0.114$). The data closely resembles a symmetrical, approximately Normal distribution.   Process Temperature [K]Central Tendency: Mean ($310.006\text{ K}$) and Median ($310.100\text{ K}$) are virtually equal. On average, process temperature is about $10\text{ K}$ higher than air temperature.   Spread: Very low dispersion ($\text{std} = 1.484\text{ K}$, $\text{IQR} = 2.300\text{ K}$), ranging between $305.700\text{ K}$ and $313.800\text{ K}$.   Distribution Shape: Skewness is near zero ($0.015$), indicating a highly symmetric / bell-shaped distribution tightly controlled around $310\text{ K}$.   Rotational Speed [rpm]Central Tendency: Mean ($1,538.776\text{ rpm}$) is visibly higher than the Median ($1,503.000\text{ rpm}$).   Spread: Moderate variability ($\text{std} = 179.284\text{ rpm}$, $\text{IQR} = 189.000\text{ rpm}$), spanning from $1,168.000\text{ rpm}$ up to a maximum of $2,886.000\text{ rpm}$.   Distribution Shape: Skewness is strongly positive ($1.993$).   Takeaway: This feature is strongly right-skewed (positively skewed). Most operating speeds cluster around $1,500\text{ rpm}$, but there is a long tail of extreme high-speed operational events (reaching up to $2,886\text{ rpm}$).   Torque [Nm]Central Tendency: Mean ($39.987\text{ Nm}$) and Median ($40.100\text{ Nm}$) are centered around $40\text{ Nm}$.   Spread: Standard deviation is $9.969\text{ Nm}$ and IQR is $13.600\text{ Nm}$, ranging between $3.800\text{ Nm}$ and $76.600\text{ Nm}$.   Distribution Shape: Skewness is near zero ($-0.010$).   Takeaway: Torque is well-balanced and symmetric around $40\text{ Nm}$. (Note: In physical systems, high rotational speed often correlates inversely with torque).   Tool Wear [min]Central Tendency: Mean ($107.951\text{ min}$) and Median ($108.000\text{ min}$) sit right near the midpoint of its observed range.   Spread: High dispersion ($\text{std} = 63.654\text{ min}$, $\text{IQR} = 109.000\text{ min}$), stretching from $0\text{ min}$ to $253\text{ min}$.   Distribution Shape: Skewness is near zero ($0.027$).   Takeaway: Represents a Uniform-like distribution across tool lifecycle times, where tools accumulate wear linearly from $0$ up to around $250$ minutes before replacement or failure
+Data Quality & CompletenessSample Size (n = 10,000): All 5 features have 10,000 non-null values with 0 missing values. This ensures high statistical power for downstream modeling or inference. 
+
+Air Temperature [K]:
+  Central Tendency: Mean 300.005 [K] and Median 300.100 [K] are nearly identical.   
+  Spread: Standard deviation is low 2.000 [K] with an IQR of 3.200 [K], spanning from 295.300 [K] to 304.500 [K].  
+  Distribution Shape: Skewness is slightly positive 0.114. The data closely resembles a symmetrical, approximately Normal distribution.   
+
+Process Temperature [K]
+  Central Tendency: Mean 310.006 [K] and Median 310.100 [K] are virtually equal. On average, process temperature is about 10 [K] higher than air temperature.   
+  Spread: Very low dispersion std = 1.484 [K], IQR = 2.300 [K], ranging between 305.700 [K] and 313.800[K].   
+  Distribution Shape: Skewness is near zero (0.015), indicating a highly symmetric / bell-shaped distribution tightly controlled around 310[K].  
+  
+Rotational Speed [rpm]
+  Central Tendency: Mean 1,538.776[rpm] is visibly higher than the Median 1,503.000[rpm].   
+  Spread: Moderate variability std = 179.284[rpm], IQR = 189.000[rpm], spanning from 1,168.000[rpm] up to a maximum of $2,886.000[rpm].   
+  Distribution Shape: Skewness is strongly positive 1.993.   
+  Takeaway: This feature is strongly right-skewed (positively skewed). Most operating speeds cluster around 1,500[rpm], but there is a long tail of extreme high-speed operational events (reaching up to 2,886 [rpm].   
+Torque [Nm]
+  Central Tendency: Mean 39.987[Nm] and Median 40.100 [Nm] are centered around 40[Nm].   
+  Spread: Standard deviation is 9.969 [Nm] and IQR is 13.600 [Nm], ranging between 3.800 [Nm] and 76.600[Nm]. 
+  Distribution Shape: Skewness is near zero -0.010.   
+  Takeaway: Torque is well-balanced and symmetric around 40[Nm]. 
+Tool Wear [min]
+  Central Tendency: Mean 107.951[ min] and Median 108.000[min] sit right near the midpoint of its observed range.   
+  Spread: High dispersion std = 63.654[ min], IQR = 109.000[min], stretching from 0[min] to 253[min].   
+  Distribution Shape: Skewness is near zero 0.027.   
+  Takeaway: Represents a Uniform-like distribution across tool lifecycle times, where tools accumulate wear linearly from 0 up to around 250 minutes before replacement or failure
 
 #5.Design/ Architecture
 
