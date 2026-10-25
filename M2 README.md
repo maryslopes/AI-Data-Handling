@@ -22,12 +22,22 @@ Bias considerations: The dataset may be biased toward certain types of equipment
 Ethical considerations: Using this dataset for academic purposes is ethical, as it is openly shared. Care should be taken not to misrepresent it as pharmaceutical‑specific data; instead, it should be framed as a proxy dataset that demonstrates how AI can be applied to equipment failure prediction in manufacturing environments, including pharma.
 Data limitation: Dataset is simulated, not pharma-specific, may not generalize to GMP environments.
 
+
 #3.Data description
 For statistical analysis and exploratory data analysis (EDA), we use the **processed dataset** stored in GCS:
 
 `gs://equipment-failure-20122724/processed/Equipment-Failure-clean.csv`
 
 This file is derived from the raw Kaggle dataset (`gs://equipment-failure-20122724/raw/Equipment-Failure.csv`) after validation and cleaning. Column names were adjusted to meet BigQuery requirements, and data types were standardized.
+
+Screenshot of files on GCS:
+*RAW
+<img width="1766" height="617" alt="image" src="https://github.com/user-attachments/assets/3fac4fa8-344b-4515-bb77-1594401bb5d9" />
+
+*PROCESSED
+<img width="1767" height="601" alt="image" src="https://github.com/user-attachments/assets/70a15183-3c8c-43cc-b4d0-f6ac7fdd3857" />
+
+
 
 ### Unit of analysis
 Each row represents one equipment operation instance with associated process variables and a binary failure outcome.
@@ -168,6 +178,7 @@ Output: Sharded datasets and cross‑validation folds stored under sharded/.
 
 Analysis: All EDA and statistical analysis in Milestone 2 are performed on the processed file.
 
+
 #6.Implementation
 
 The GCS bucket is organized into three main areas:
@@ -186,7 +197,17 @@ This separation ensures:
 - **Processed file** supports BigQuery ingestion.  
 - **Sharded splits** support ML training and evaluation.
 
+In Milestone 1, the ingestion and splitting scripts were implemented   
+- Raw data (`raw/Equipment-Failure.csv`) was uploaded to GCS.  
+- Train/dev/test splits and CV folds were generated from the raw file and stored under `sharded/`.  
+
+In Milestone 2, we build on this foundation by validating and cleaning the dataset, using the BigQuery‑compatible file (`processed/Equipment-Failure-clean.csv`) and performing statistical analysis and EDA.
+
 
 #7.Next steps
- Optimize preprocessing (scaling, feature engineering, dimensionality reduction).
-- Prepare for Milestone 3: baseline model comparison and evaluation plan.
+-Baseline: logistic regression/random forest.
+-Optimize preprocessing (scaling, feature engineering, dimensionality reduction).
+-Prepare for Milestone 3: baseline model comparison and evaluation plan.
+
+
+
