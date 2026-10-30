@@ -209,7 +209,17 @@ In Milestone 1, the ingestion and splitting scripts were implemented
 
 In Milestone 2, we build on this foundation by validating and cleaning the dataset, using the BigQuery‑compatible file (`processed/Equipment-Failure-clean.csv`) and performing statistical analysis and EDA.
 
+-Environment Setup
 
+### Environment Setup
+
+```markdown 
+Install dependencies with:
+
+```bash
+pip install -r requirements.txt
+
+```
 
 #7.Next steps
 -Baseline: logistic regression/random forest.
