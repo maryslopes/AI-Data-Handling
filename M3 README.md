@@ -33,14 +33,16 @@ Unscaled	0.0340	0.9660	0.5906	33.4541
 StandardScaler	0.9180	0.9750	0.8717	27.4825
 MinMaxScaler	0.9670	0.9730	0.1730	27.8635
 
-<img width="958" height="173" alt="image" src="https://github.com/user-attachments/assets/232282c4-60d6-4ba6-9d0c-cf230dbd12d7" />
+<img width="657" height="173" alt="image" src="https://github.com/user-attachments/assets/4b0123b3-31d5-47af-b7e4-2aa8a6f7c440" />
+
 
 The GPU achieved a 0.3% higher accuracy than CPU however it required 0.15s longer. They are substantially comparing the ratio accurancy/time. Therefore is not worthy to use GPU for this model.
 Method	NN Accuracy	NN (Time (s)
 StandardScaler CPU	0.9750	27.4825
 StandardScaler GPU	0.9780	27.6330
 
-<img width="741" height="88" alt="image" src="https://github.com/user-attachments/assets/cbc6be5e-44e2-4c71-b428-22b6c50fc4d9" />
+<img width="440" height="88" alt="image" src="https://github.com/user-attachments/assets/14105e61-5c29-4beb-a289-24241dbd0691" />
+
 
 b. Learning Curve Plot
 The learning curves demonstrate that feature scaling substantially improved neural network training. Models trained on standardised data showed a continuous reduction in training loss, whereas models trained on unscaled features exhibited persistently high loss values. This suggests that standardisation improved optimisation and convergence.
