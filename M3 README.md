@@ -1,11 +1,11 @@
 # AI Data Handling Project M3 2026
 Machine learning and AI projects 2026 course.
 
-## My Project
+# My Project
 Build an AI system that identifies early signs of equipment malfunction to reduce batch failures, prevent quality deviations, and support continuous improvement in pharmaceutical production environments.
 
 
-#1. AI model selection
+##1. AI model selection
 Refer to file "AI model selection.ipynb" for coding: https://github.com/maryslopes/AI-Data-Handling/blob/M3-project/AI%20model%20selection.ipynb
 
 This project addresses a binary classification problem: predicting whether industrial equipment will experience machine failure based on operational sensor measurements. Two machine learning approaches were selected and compared: a Support Vector Machine (SVM) classifier and a feedforward Neural Network.
@@ -17,7 +17,7 @@ The Neural Network was selected because it can automatically learn complex inter
 The objective of comparing both models was to identify the best trade-off between predictive accuracy and computational efficiency.
 
 
-#2.Hyperparameter optimization
+##2.Hyperparameter optimization
 Refer to file "Hyperparameter.ipynb" for coding:  https://colab.research.google.com/github/maryslopes/AI-Data-Handling/blob/M3-project/Hyperparameter.ipynb#scrollTo=hn_SVk5JIeCV
 Hyperparameter optimisation was performed to improve model performance while avoiding unnecessary model complexity.
 
@@ -59,7 +59,7 @@ Dropout = 0.2
 These values provided stable convergence and strong predictive performance while minimising overfitting.
 
 
-#3.MLOps and experiment tracking
+##3.MLOps and experiment tracking
 
 Experiments were tracked and compared systematically using version-controlled notebooks and cloud-hosted datasets stored in Google Cloud Storage. Each experiment recorded the preprocessing strategy, model configuration, training duration, and evaluation metrics.
 
@@ -76,9 +76,9 @@ CPU versus GPU execution
 This structured experimentation enabled reproducible comparison of model behaviour under different preprocessing and computational conditions.
 
 
-#4.Analysis and conclusions from experiments
+##4.Analysis and conclusions from experiments
 
-a. Preprocessing strategies
+###a. Preprocessing strategies
 The experiments demonstrated that feature scaling had a substantial impact on model performance.
 
 The unscaled dataset produced poor SVM performance (3.4% accuracy) and resulted in significantly higher Neural Network training loss. Both StandardScaler and MinMaxScaler improved optimisation and classification performance.
@@ -95,18 +95,18 @@ StandardScaler	91.8%	97.5%	0.8717	27.4825
 MinMaxScaler	96.7%	97.3%	0.1730	27.8635
 <img width="707" height="173" alt="image" src="https://github.com/user-attachments/assets/a6a16fb4-477b-4a02-b509-c6a85f3249d3" />
 
-b. Learning Curve Plot
+###b. Learning Curve Plot
 The learning curves demonstrate that feature scaling substantially improved neural network training. Models trained on standardised data showed a continuous reduction in training loss, whereas models trained on unscaled features exhibited persistently high loss values. This suggests that standardisation improved optimisation and convergence.
 
 <img width="850" height="552" alt="image" src="https://github.com/user-attachments/assets/61ff1d91-4fd3-4bbb-96e2-cb9ed83b2d88" />
 
-c. Misclassified Samples vs Feature Distributions
+###c. Misclassified Samples vs Feature Distributions
 The largest spread of error points appears around Torque [Nm] and Tool wear [min]. hese variables may contribute more to prediction uncertainty.
 
 <img width="1389" height="790" alt="image" src="https://github.com/user-attachments/assets/a849c9b6-3b39-4788-89a0-35c91b144ac1" />
 
 
-#5.Compute architecture selection
+##5.Compute architecture selection
 
 Neural Network experiments were executed using both CPU and GPU configurations.
 
@@ -123,7 +123,7 @@ Although GPU execution produced marginally higher accuracy, the training-time di
 These findings demonstrate that compute architecture should be selected according to dataset size and training complexity rather than assumed benefits.
 
 
-#6.Reproducibility 
+##6.Reproducibility 
 
 The project environment was documented using a concise requirements.txt file containing the exact package versions required to reproduce the experiments.
 Reproducibility was incorporated throughout the project.
@@ -138,7 +138,7 @@ Training and evaluation performed using version-controlled notebooks.
 These measures ensure that results can be reproduced and verified by other researchers.
 
 
-#7.Model card / model documentation
+##7.Model card / model documentation
 Model Card
 Intended Use
 
@@ -165,7 +165,7 @@ Best SVM accuracy: 96.7%
 Limitations: The model was trained on a historical dataset and may not fully generalise to different equipment types or operating conditions.
 
 
-#8. Error analysis and model weaknesses
+##8. Error analysis and model weaknesses
 Misclassified samples were analysed to identify situations in which prediction errors occurred.
 
 Error distributions were observed across all input variables but appeared more frequently in regions associated with higher torque and greater tool wear. This suggests that failure patterns within these operating conditions may be more difficult to distinguish.
