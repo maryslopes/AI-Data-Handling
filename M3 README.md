@@ -4,6 +4,7 @@ Machine learning and AI projects 2026 course.
 # My Project
 Build an AI system that identifies early signs of equipment malfunction to reduce batch failures, prevent quality deviations, and support continuous improvement in pharmaceutical production environments.
 
+
 #1. AI model selection
 Refer to file "AI model selection.ipynb" for coding: https://github.com/maryslopes/AI-Data-Handling/blob/M3-project/AI%20model%20selection.ipynb
 
@@ -14,7 +15,6 @@ The SVM was chosen because it is a strong baseline model for structured tabular 
 The Neural Network was selected because it can automatically learn complex interactions between multiple sensor variables and has demonstrated strong performance in predictive maintenance applications. Although Neural Networks typically require longer training times than traditional machine learning algorithms, they can provide improved predictive performance when feature interactions are highly non-linear.
 
 The objective of comparing both models was to identify the best trade-off between predictive accuracy and computational efficiency.
-
 
 
 #2.Hyperparameter optimization
@@ -53,6 +53,7 @@ Learning rate = 0.001
 Dropout = 0.2
 
 These values provided stable convergence and strong predictive performance while minimising overfitting.
+
 
 #3.MLOps and experiment tracking
 
@@ -132,6 +133,7 @@ Training and evaluation performed using version-controlled notebooks.
 
 These measures ensure that results can be reproduced and verified by other researchers.
 
+
 #7.Model card / model documentation
 Model Card
 Intended Use
@@ -157,6 +159,7 @@ Best Neural Network accuracy: 97.5%
 Best SVM accuracy: 96.7%
 
 Limitations: The model was trained on a historical dataset and may not fully generalise to different equipment types or operating conditions.
+
 
 #8. Error analysis and model weaknesses
 Misclassified samples were analysed to identify situations in which prediction errors occurred.
