@@ -5,44 +5,90 @@ Machine learning and AI projects 2026 course.
 Build an AI system that identifies early signs of equipment malfunction to reduce batch failures, prevent quality deviations, and support continuous improvement in pharmaceutical production environments.
 
 #1. AI model selection
+Refer to file "AI model selection.ipynb" for coding: https://github.com/maryslopes/AI-Data-Handling/blob/M3-project/AI%20model%20selection.ipynb
+
+This project addresses a binary classification problem: predicting whether industrial equipment will experience machine failure based on operational sensor measurements. Two machine learning approaches were selected and compared: a Support Vector Machine (SVM) classifier and a feedforward Neural Network.
+
+The SVM was chosen because it is a strong baseline model for structured tabular datasets and can capture non-linear relationships through the Radial Basis Function (RBF) kernel. Equipment failures are often influenced by complex interactions between temperature, rotational speed, torque, and tool wear, making a non-linear classifier appropriate.
+
+The Neural Network was selected because it can automatically learn complex interactions between multiple sensor variables and has demonstrated strong performance in predictive maintenance applications. Although Neural Networks typically require longer training times than traditional machine learning algorithms, they can provide improved predictive performance when feature interactions are highly non-linear.
+
+The objective of comparing both models was to identify the best trade-off between predictive accuracy and computational efficiency.
 
 
 
-The cleaned dataset was stored in Google Cloud Storage and accessed directly from the bucket using a gs:// URI. This approach supports reproducibility and demonstrates integration with cloud-based data infrastructure.
+#2.Hyperparameter optimization
+Refer to file "Hyperparameter.ipynb" for coding:  https://colab.research.google.com/github/maryslopes/AI-Data-Handling/blob/M3-project/Hyperparameter.ipynb#scrollTo=hn_SVk5JIeCV
+Hyperparameter optimisation was performed to improve model performance while avoiding unnecessary model complexity.
 
-The file AI model selection.ipynb presents the code for the AI selection:
+For the SVM model, the following parameters were evaluated:
 
-https://github.com/maryslopes/AI-Data-Handling/blob/M3-project/AI%20model%20selection.ipynb
+Kernel type (RBF)
+Regularisation parameter C
+Gamma parameter
+Maximum number of iterations
 
-Six original features were selected for machine failure prediction. The categorical machine type variable was transformed using one-hot encoding, producing two binary variables (Type_L and Type_M). This resulted in seven preprocessed features used by the SVM and Neural Network models.
+The final configuration selected was:
 
-An SVM classifier using an RBF kernel was implemented to capture non-linear relationships between equipment sensor measurements and machine failures. A regularisation parameter C=1.0 and gamma='scale' were used as baseline settings. A fixed random state of 42 was applied to ensure reproducibility.
+kernel='rbf'
+C=1.0
+gamma='scale'
+max_iter=2000
 
-The RBF kernel was selected because equipment failures are influenced by complex non-linear relationships between sensor measurements.
+This configuration achieved strong predictive performance while maintaining low training time.
 
-The original dataset contained 15 variables. Feature selection was performed to retain only the attributes considered relevant for predicting machine failure: machine type, air temperature, process temperature, rotational speed, torque and tool wear. The categorical machine type variable was one-hot encoded, resulting in a final feature set of seven input variables used for model training.
+For the Neural Network, the following parameters were investigated:
 
-a. Preprocessing strategie
+Hidden layer size
+Learning rate
+Batch size
+Number of epochs
+Dropout rate
 
-Three preprocessing strategies were evaluated: unscaled features, standardisation (StandardScaler), and MinMax normalisation. The unscaled data resulted in poor neural network convergence, with training loss remaining high throughout training. Standardisation improved optimisation by transforming features to zero mean and unit variance, leading to a substantial reduction in training loss. MinMax normalisation scaled features to the range [0,1] and produced the highest classification accuracy (97.3%) with the neural network and 96.7% with the SVM. These results demonstrate that feature scaling is critical for machine-failure prediction models.
+The final Neural Network configuration was:
+Hidden size = 128
+Epochs = 50
+Batch size = 32
+Learning rate = 0.001
+Dropout = 0.2
 
-Two classification models were evaluated for machine failure prediction: a Support Vector Machine (SVM) and a feedforward Neural Network. The SVM achieved 96.7% accuracy while requiring only 0.17 seconds of training time. The Neural Network achieved the highest accuracy (97.3%) but required substantially more computational time (27.9 seconds). These results demonstrate a trade-off between predictive performance and computational efficiency. While the Neural Network produced the best classification accuracy, the SVM offered comparable performance with significantly lower training costs.
-As seen below: 
-Method	SVM Accuracy	NN Accuracy	SVM Time (s)	NN (Time (s)
-Unscaled	0.0340	0.9660	0.5906	33.4541
-StandardScaler	0.9180	0.9750	0.8717	27.4825
-MinMaxScaler	0.9670	0.9730	0.1730	27.8635
+These values provided stable convergence and strong predictive performance while minimising overfitting.
 
-<img width="657" height="173" alt="image" src="https://github.com/user-attachments/assets/4b0123b3-31d5-47af-b7e4-2aa8a6f7c440" />
+#3.MLOps and experiment tracking
+
+Experiments were tracked and compared systematically using version-controlled notebooks and cloud-hosted datasets stored in Google Cloud Storage. Each experiment recorded the preprocessing strategy, model configuration, training duration, and evaluation metrics.
+
+The following experimental configurations were evaluated:
+
+SVM with unscaled features
+SVM with StandardScaler
+SVM with MinMaxScaler
+Neural Network with unscaled features
+Neural Network with StandardScaler
+Neural Network with MinMaxScaler
+CPU versus GPU execution
+
+This structured experimentation enabled reproducible comparison of model behaviour under different preprocessing and computational conditions.
 
 
-The GPU achieved a 0.3% higher accuracy than CPU however it required 0.15s longer. They are substantially comparing the ratio accurancy/time. Therefore is not worthy to use GPU for this model.
-Method	NN Accuracy	NN (Time (s)
-StandardScaler CPU	0.9750	27.4825
-StandardScaler GPU	0.9780	27.6330
+#4.Analysis and conclusions from experiments
 
-<img width="440" height="88" alt="image" src="https://github.com/user-attachments/assets/14105e61-5c29-4beb-a289-24241dbd0691" />
+a. Preprocessing strategies
+The experiments demonstrated that feature scaling had a substantial impact on model performance.
 
+The unscaled dataset produced poor SVM performance (3.4% accuracy) and resulted in significantly higher Neural Network training loss. Both StandardScaler and MinMaxScaler improved optimisation and classification performance.
+
+The highest Neural Network accuracy (97.5%) was achieved using StandardScaler, while the highest SVM accuracy (96.7%) was achieved using MinMaxScaler.
+
+Although the Neural Network consistently achieved the highest predictive accuracy, the improvement over the SVM was relatively small. Consequently, the SVM remains an attractive option when computational efficiency is important.
+
+Overall, the Neural Network was selected as the best-performing model due to its superior predictive accuracy. See results below:
+
+Method	SVM Accuracy	NN Accuracy	SVM Training Time (s)	NN Training Time (s)
+Unscaled	3.4%	96.6%	0.5906	33.4541
+StandardScaler	91.8%	97.5%	0.8717	27.4825
+MinMaxScaler	96.7%	97.3%	0.1730	27.8635
+<img width="707" height="173" alt="image" src="https://github.com/user-attachments/assets/a6a16fb4-477b-4a02-b509-c6a85f3249d3" />
 
 b. Learning Curve Plot
 The learning curves demonstrate that feature scaling substantially improved neural network training. Models trained on standardised data showed a continuous reduction in training loss, whereas models trained on unscaled features exhibited persistently high loss values. This suggests that standardisation improved optimisation and convergence.
@@ -50,39 +96,80 @@ The learning curves demonstrate that feature scaling substantially improved neur
 <img width="850" height="552" alt="image" src="https://github.com/user-attachments/assets/61ff1d91-4fd3-4bbb-96e2-cb9ed83b2d88" />
 
 c. Misclassified Samples vs Feature Distributions
-he largest spread of error points appears around Torque [Nm] and Tool wear [min]. hese variables may contribute more to prediction uncertainty.
+The largest spread of error points appears around Torque [Nm] and Tool wear [min]. hese variables may contribute more to prediction uncertainty.
 
 <img width="1389" height="790" alt="image" src="https://github.com/user-attachments/assets/a849c9b6-3b39-4788-89a0-35c91b144ac1" />
-
-#2.Hyperparameter optimization
-
-The Hyperparameter.ipynb code presents the analysis. 
-
-The best Hyperparameter Set Found was:
-
-<img width="697" height="87" alt="image" src="https://github.com/user-attachments/assets/731b63d0-fc1a-4500-b001-c8f4796bf060" />
-
-
-#3.MLOps and experiment tracking
-
-The search and retrieve the most recent MLflow run resulted on: 
-
-<img width="907" height="452" alt="image" src="https://github.com/user-attachments/assets/a46bedb3-5127-48b8-95e3-c74f4e3ebc3c" />
-
-#4.Analysis and conclusions from experiments
 
 
 #5.Compute architecture selection
 
- 
+Neural Network experiments were executed using both CPU and GPU configurations.
+
+Results showed:
+
+Method	NN Accuracy	NN Training(Time (s)
+StandardScaler CPU	97.5%	27.4825
+StandardScaler GPU	97.8%	27.6330
+<img width="515" height="88" alt="image" src="https://github.com/user-attachments/assets/60015f50-a6eb-4dcd-b55e-71f2d8d94272" />
+
+
+Although GPU execution produced marginally higher accuracy, the training-time difference was negligible. Given the relatively small dataset size (10,000 records), GPU acceleration provided limited practical benefit. For larger predictive-maintenance datasets, GPU execution would likely offer greater advantages.
+
+These findings demonstrate that compute architecture should be selected according to dataset size and training complexity rather than assumed benefits.
+
+
 #6.Reproducibility 
 
 The project environment was documented using a concise requirements.txt file containing the exact package versions required to reproduce the experiments.
+Reproducibility was incorporated throughout the project.
+
+Random seed fixed to 42 for consistent train/test splits.
+Dataset stored in Google Cloud Storage.
+Source code maintained in GitHub.
+Dependencies documented using a concise requirements.txt file.
+Hyperparameters explicitly recorded.
+Training and evaluation performed using version-controlled notebooks.
+
+These measures ensure that results can be reproduced and verified by other researchers.
 
 #7.Model card / model documentation
+Model Card
+Intended Use
 
+Predict machine failures from equipment sensor measurements to support predictive maintenance and improve manufacturing reliability.
+
+Input Features
+Type
+Air temperature [K]
+Process temperature [K]
+Rotational speed [rpm]
+Torque [Nm]
+Tool wear [min]
+Output
+
+Binary classification:
+
+0 = No machine failure
+1 = Machine failure
+Performance
+
+Best Neural Network accuracy: 97.5%
+Best SVM accuracy: 96.7%
+
+Limitations: The model was trained on a historical dataset and may not fully generalise to different equipment types or operating conditions.
 
 #8. Error analysis and model weaknesses
+Misclassified samples were analysed to identify situations in which prediction errors occurred.
 
+Error distributions were observed across all input variables but appeared more frequently in regions associated with higher torque and greater tool wear. This suggests that failure patterns within these operating conditions may be more difficult to distinguish.
+
+Several limitations were identified:
+
+The dataset contains a relatively small number of failure cases compared with non-failure cases.
+Performance may decrease when deployed to equipment not represented in the training data.
+Environmental and operational variables not captured in the dataset may influence machine failure.
+The Neural Network requires substantially greater computational resources than the SVM.
+
+Future work could focus on additional feature engineering, model calibration, ensemble methods, and collection of larger datasets containing more failure examples.
 
 
