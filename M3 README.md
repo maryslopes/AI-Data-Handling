@@ -24,6 +24,8 @@ The original dataset contained 15 variables. Feature selection was performed to 
 
 
 Refer to file "Hyperparameter.ipynb" for coding:  https://colab.research.google.com/github/maryslopes/AI-Data-Handling/blob/M3-project/Hyperparameter.ipynb#scrollTo=hn_SVk5JIeCV
+
+
 Hyperparameter optimisation was performed to improve model performance while avoiding unnecessary model complexity.
 
 For the SVM model, different values of the regularisation parameter C and gamma were evaluated. Performance was assessed using validation accuracy and training time. The final configuration (kernel='rbf', C=1.0, gamma='scale', max_iter=2000) provided the best balance between predictive performance and computational efficiency.
