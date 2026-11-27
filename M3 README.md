@@ -5,7 +5,7 @@ Machine learning and AI projects 2026 course.
 Build an AI system that identifies early signs of equipment malfunction to reduce batch failures, prevent quality deviations, and support continuous improvement in pharmaceutical production environments.
 
 
-\##1. AI model selection
+##1. AI model selection
 
 
 Refer to file "AI model selection.ipynb" for coding: https://github.com/maryslopes/AI-Data-Handling/blob/M3-project/AI%20model%20selection.ipynb
@@ -20,7 +20,7 @@ The objective of comparing both models was to identify the best trade-off betwee
 
 The original dataset contained 15 variables. Feature selection was performed to retain only variables expected to influence machine degradation and failure. The selected features were machine type, air temperature, process temperature, rotational speed, torque and tool wear. Variables representing specific failure categories and identifiers were excluded because they either contained target-related information or provided little predictive value. Machine type was one-hot encoded, producing a final set of seven preprocessed features used for model training.
 
-\##2.Hyperparameter Optimization
+##2.Hyperparameter Optimization
 
 
 Refer to file "Hyperparameter.ipynb" for coding:  https://colab.research.google.com/github/maryslopes/AI-Data-Handling/blob/M3-project/Hyperparameter.ipynb#scrollTo=hn_SVk5JIeCV
@@ -42,16 +42,21 @@ Number of epochs
 Dropout rate
 
 The final Neural Network configuration was:
+
 Hidden size = 100
+
 Epochs = 50
+
 Batch size = 32
+
 Learning rate = 0.01
+
 Dropout = 0.2
 
 These values provided stable convergence and strong predictive performance while minimising overfitting.
 
 
-\##3.MLOps and experiment tracking
+##3.MLOps and experiment tracking
 
 
 Experiments were tracked and compared systematically using version-controlled notebooks and cloud-hosted datasets stored in Google Cloud Storage. Each experiment recorded the preprocessing strategy, model configuration, training duration, and evaluation metrics.
@@ -60,11 +65,17 @@ Each experiment was uniquely identified by model type, preprocessing strategy, h
 The following experimental configurations were evaluated:
 
 SVM with unscaled features
+
 SVM with StandardScaler
+
 SVM with MinMaxScaler
+
 Neural Network with unscaled features
+
 Neural Network with StandardScaler
+
 Neural Network with MinMaxScaler
+
 CPU versus GPU execution
 
 This structured experimentation enabled reproducible comparison of model behaviour under different preprocessing and computational conditions.
@@ -72,10 +83,10 @@ This structured experimentation enabled reproducible comparison of model behavio
 TensorBoard was used to track Neural Network experiments and compare different hyperparameter configurations. Validation accuracy, training duration and convergence behaviour were monitored for each run, enabling systematic comparison of candidate models.
 
 
-\##4.Analysis and conclusions from experiments
+##4.Analysis and conclusions from experiments
 
 
-\###a. Preprocessing strategies
+###a. Preprocessing strategies
 
 
 The experiments demonstrated that feature scaling had a substantial impact on model performance.
@@ -97,21 +108,22 @@ Overall, the Neural Network was selected as the best-performing model due to its
 | StandardScaler | 91.8% | 97.5% | 0.8717 | 27.4825 |
 | MinMaxScaler | 96.7% | 97.3% | 0.1730 | 27.8635 |
 
-\###b. Learning Curve Plot
+###b. Learning Curve Plot
 
 
 The learning curves demonstrate that feature scaling substantially improved neural network training. Models trained on standardised data showed a continuous reduction in training loss, whereas models trained on unscaled features exhibited persistently high loss values. This suggests that standardisation improved optimisation and convergence.
 
 <img width="850" height="552" alt="image" src="https://github.com/user-attachments/assets/61ff1d91-4fd3-4bbb-96e2-cb9ed83b2d88" />
 
-\###c. Misclassified Samples vs Feature Distributions
+###c. Misclassified Samples vs Feature Distributions
 The largest spread of error points appears around Torque [Nm] and Tool wear [min]. These variables may contribute more to prediction uncertainty.
 
 <img width="1389" height="790" alt="image" src="https://github.com/user-attachments/assets/a849c9b6-3b39-4788-89a0-35c91b144ac1" />
 
 Based on the experimental results, the Neural Network trained using StandardScaler preprocessing was selected as the preferred model for deployment. This model achieved the highest predictive accuracy (97.5%) while maintaining stable convergence throughout training. Although the SVM offered superior computational efficiency, the additional predictive performance provided by the Neural Network was considered more valuable for early detection of equipment failures within pharmaceutical manufacturing environments.
 
-\###d. Neural Network Hyperparameter Search
+
+###d. Neural Network Hyperparameter Search
 
 TensorBoard was used to track Neural Network experiments and visualise both training loss and validation accuracy. This enabled systematic comparison of hyperparameter combinations and provided evidence for selecting the final model configuration.
 TensorBoard was used to monitor training loss across multiple Neural Network configurations. Hidden-layer sizes of 100, 500 and 1000 neurons were evaluated together with learning rates of 0.001, 0.01 and 0.1.
@@ -135,7 +147,7 @@ These findings demonstrate the importance of hyperparameter optimisation and sup
 <img width="1026" height="495" alt="image" src="https://github.com/user-attachments/assets/4b04bb1b-5473-4862-925a-8eb14d361367" />
 
 
-\##5.Compute architecture selection
+##5.Compute architecture selection
 
 Neural Network experiments were executed using both CPU and GPU configurations.
 
@@ -152,7 +164,7 @@ Although GPU execution produced marginally higher accuracy, the training-time di
 These findings demonstrate that compute architecture should be selected according to dataset size and training complexity rather than assumed benefits.
 
 
-\##6.Reproducibility 
+##6.Reproducibility 
 
 
 The project environment was documented using a concise requirements.txt file containing the exact package versions required to reproduce the experiments.
@@ -168,7 +180,7 @@ Training and evaluation performed using version-controlled notebooks.
 These measures ensure that results can be reproduced and verified by other researchers.
 
 
-\##7.Model card / model documentation
+##7.Model card / model documentation
 
 
 Model Card
@@ -197,7 +209,7 @@ Best SVM accuracy: 96.7%
 Limitations: The model was trained on a historical dataset and may not fully generalise to different equipment types or operating conditions.
 
 
-\##8. Error analysis and model weaknesses
+##8. Error analysis and model weaknesses
 
 
 Misclassified samples were analysed to identify situations in which prediction errors occurred.
@@ -212,7 +224,7 @@ Environmental and operational variables not captured in the dataset may influenc
 The Neural Network requires substantially greater computational resources than the SVM.
 
 
-\## 9. Final Recommendation
+## 9. Final Recommendation
 
 Based on all experiments conducted, the Neural Network trained on StandardScaler-preprocessed features was selected as the preferred model for deployment. This configuration achieved the highest predictive accuracy (97.5%), stable convergence behaviour and strong validation performance. Although the SVM offered substantially faster training times, the Neural Network's superior predictive capability was considered more valuable for early identification of equipment failures in pharmaceutical manufacturing environments.
 
