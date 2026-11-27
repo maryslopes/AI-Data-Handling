@@ -24,9 +24,13 @@ Hyperparameter optimisation was performed to improve model performance while avo
 For the SVM model, the following parameters were evaluated:
 
 Kernel type (RBF)
+
 Regularisation parameter C
+
 Gamma parameter
+
 Maximum number of iterations
+
 
 The final configuration selected was:
 
