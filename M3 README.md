@@ -16,8 +16,9 @@ The Neural Network was selected because it can automatically learn complex inter
 
 The objective of comparing both models was to identify the best trade-off between predictive accuracy and computational efficiency.
 
+The original dataset contained 15 variables. Feature selection was performed to retain only variables expected to influence machine degradation and failure. The selected features were machine type, air temperature, process temperature, rotational speed, torque and tool wear. Variables representing specific failure categories and identifiers were excluded because they either contained target-related information or provided little predictive value. Machine type was one-hot encoded, producing a final set of seven preprocessed features used for model training.
 
-##2.Hyperparameter optimization
+##2.Hyperparameter Optimization
 Refer to file "Hyperparameter.ipynb" for coding:  https://colab.research.google.com/github/maryslopes/AI-Data-Handling/blob/M3-project/Hyperparameter.ipynb#scrollTo=hn_SVk5JIeCV
 Hyperparameter optimisation was performed to improve model performance while avoiding unnecessary model complexity.
 
@@ -89,11 +90,12 @@ Although the Neural Network consistently achieved the highest predictive accurac
 
 Overall, the Neural Network was selected as the best-performing model due to its superior predictive accuracy. See results below:
 
-Method	SVM Accuracy	NN Accuracy	SVM Training Time (s)	NN Training Time (s)
-Unscaled	3.4%	96.6%	0.5906	33.4541
-StandardScaler	91.8%	97.5%	0.8717	27.4825
-MinMaxScaler	96.7%	97.3%	0.1730	27.8635
-<img width="707" height="173" alt="image" src="https://github.com/user-attachments/assets/a6a16fb4-477b-4a02-b509-c6a85f3249d3" />
+
+| Method | SVM Accuracy | NN Accuracy | SVM Training Time (s) | NN Training Time (s) |
+|----------|----------|----------|----------|----------|
+| Unscaled | 3.4% | 96.6% | 0.5906 | 33.4541 |
+| StandardScaler | 91.8% | 97.5% | 0.8717 | 27.4825 |
+| MinMaxScaler | 96.7% | 97.3% | 0.1730 | 27.8635 |
 
 ###b. Learning Curve Plot
 The learning curves demonstrate that feature scaling substantially improved neural network training. Models trained on standardised data showed a continuous reduction in training loss, whereas models trained on unscaled features exhibited persistently high loss values. This suggests that standardisation improved optimisation and convergence.
@@ -101,10 +103,11 @@ The learning curves demonstrate that feature scaling substantially improved neur
 <img width="850" height="552" alt="image" src="https://github.com/user-attachments/assets/61ff1d91-4fd3-4bbb-96e2-cb9ed83b2d88" />
 
 ###c. Misclassified Samples vs Feature Distributions
-The largest spread of error points appears around Torque [Nm] and Tool wear [min]. hese variables may contribute more to prediction uncertainty.
+The largest spread of error points appears around Torque [Nm] and Tool wear [min]. These variables may contribute more to prediction uncertainty.
 
 <img width="1389" height="790" alt="image" src="https://github.com/user-attachments/assets/a849c9b6-3b39-4788-89a0-35c91b144ac1" />
 
+Based on the experimental results, the Neural Network trained using StandardScaler preprocessing was selected as the preferred model for deployment. This model achieved the highest predictive accuracy (97.5%) while maintaining stable convergence throughout training. Although the SVM offered superior computational efficiency, the additional predictive performance provided by the Neural Network was considered more valuable for early detection of equipment failures within pharmaceutical manufacturing environments.
 
 ##5.Compute architecture selection
 
@@ -112,10 +115,10 @@ Neural Network experiments were executed using both CPU and GPU configurations.
 
 Results showed:
 
-Method	NN Accuracy	NN Training(Time (s)
-StandardScaler CPU	97.5%	27.4825
-StandardScaler GPU	97.8%	27.6330
-<img width="515" height="88" alt="image" src="https://github.com/user-attachments/assets/60015f50-a6eb-4dcd-b55e-71f2d8d94272" />
+| Method | NN Accuracy | NN Training Time (s) |
+|----------|----------|----------|
+| StandardScaler CPU | 97.5% | 27.4825 |
+| StandardScaler GPU | 97.8% | 27.6330 |
 
 
 Although GPU execution produced marginally higher accuracy, the training-time difference was negligible. Given the relatively small dataset size (10,000 records), GPU acceleration provided limited practical benefit. For larger predictive-maintenance datasets, GPU execution would likely offer greater advantages.
