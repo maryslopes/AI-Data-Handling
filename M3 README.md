@@ -34,9 +34,9 @@ Maximum number of iterations
 
 The final configuration selected was:
 
-kernel='rbf'
-C=1.0
-gamma='scale'
+kernel='rbf',
+C=1.0,
+gamma='scale',
 max_iter=2000
 
 This configuration achieved strong predictive performance while maintaining low training time.
