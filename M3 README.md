@@ -1,7 +1,7 @@
 # AI Data Handling Project M3 2026
 Machine learning and AI projects 2026 course.
 
-# My Project
+## My Project
 Build an AI system that identifies early signs of equipment malfunction to reduce batch failures, prevent quality deviations, and support continuous improvement in pharmaceutical production environments.
 
 
